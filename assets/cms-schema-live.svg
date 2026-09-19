@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="344 12 260 246" role="img" aria-labelledby="title">
+  <title id="title">live 스키마: 이벤트 원장, 집계 후보, 작업 큐, 승인 검사와 이력</title>
+  <defs>
+    <marker id="gray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0 0L6 3L0 6Z" fill="#778296" />
+    </marker>
+    <marker id="green" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0 0L6 3L0 6Z" fill="#249452" />
+    </marker>
+  </defs>
+  <g font-family="Arial, sans-serif" fill="#202631">
+    <rect x="356" y="24" width="236" height="222" rx="0" fill="#f5f7ff" stroke="#3e63dd" stroke-width="1.5" />
+    <text x="474" y="52" text-anchor="middle" font-size="18" font-weight="600">live schema</text>
+    <rect x="368" y="67" width="212" height="166" rx="0" fill="#fff" stroke="#7690eb" stroke-width="1.5" />
+    <text x="474" y="93" text-anchor="middle" font-size="15" font-weight="400">measurement_event</text>
+    <text x="474" y="117" text-anchor="middle" font-size="15" font-weight="400">measurement_policy</text>
+    <text x="474" y="141" text-anchor="middle" font-size="15" font-weight="400">1min / 15min / 1h</text>
+    <text x="474" y="165" text-anchor="middle" font-size="15" font-weight="400">bucket_queue</text>
+    <text x="474" y="189" text-anchor="middle" font-size="15" font-weight="400">promotion_check</text>
+    <text x="474" y="213" text-anchor="middle" font-size="15" font-weight="400">promotion_run</text>
+  </g>
+</svg>

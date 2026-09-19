@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1760 348" role="img" aria-labelledby="title">
+  <title id="title">CMS 데이터 상태별 스키마 경계</title>
+  <defs>
+    <marker id="gray" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0 0L6 3L0 6Z" fill="#778296" />
+    </marker>
+    <marker id="green" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0 0L6 3L0 6Z" fill="#249452" />
+    </marker>
+  </defs>
+  <g font-family="Arial, sans-serif" fill="#202631">
+    <rect x="18" y="62" width="210" height="74" rx="0" fill="#fff" stroke="#3e63dd" stroke-width="1.5" />
+    <text x="123" y="91" text-anchor="middle" font-size="18" font-weight="600">Kafka</text>
+    <text x="123" y="117" text-anchor="middle" font-size="15" font-weight="400">live / backfill / DLQ</text>
+    <rect x="18" y="171" width="210" height="90" rx="0" fill="#f8f5fd" stroke="#a88cdc" stroke-width="1.5" />
+    <text x="123" y="201" text-anchor="middle" font-size="18" font-weight="600">reference schema</text>
+    <text x="123" y="227" text-anchor="middle" font-size="15" font-weight="400">corrected_resampled</text>
+    <text x="123" y="250" text-anchor="middle" font-size="15" font-weight="400">15min / 1h</text>
+    <rect x="356" y="24" width="236" height="222" rx="0" fill="#f5f7ff" stroke="#3e63dd" stroke-width="1.5" />
+    <text x="474" y="52" text-anchor="middle" font-size="18" font-weight="600">live schema</text>
+    <rect x="368" y="67" width="212" height="166" rx="0" fill="#fff" stroke="#7690eb" stroke-width="1.5" />
+    <rect x="770" y="24" width="236" height="222" rx="0" fill="#f1faf4" stroke="#249452" stroke-width="1.5" />
+    <text x="888" y="52" text-anchor="middle" font-size="18" font-weight="600">canonical schema</text>
+    <rect x="782" y="67" width="212" height="166" rx="0" fill="#f8fcf9" stroke="#62af7f" stroke-width="1.5" />
+    <text x="888" y="108" text-anchor="middle" font-size="15" font-weight="400">measurement_1min</text>
+    <text x="888" y="138" text-anchor="middle" font-size="15" font-weight="400">measurement_15min</text>
+    <text x="888" y="168" text-anchor="middle" font-size="15" font-weight="400">measurement_1h</text>
+    <text x="888" y="208" text-anchor="middle" font-size="15" font-weight="400">approved observed truth</text>
+    <rect x="1184" y="54" width="236" height="184" rx="0" fill="#fcf7fd" stroke="#a759b5" stroke-width="1.5" />
+    <text x="1302" y="82" text-anchor="middle" font-size="18" font-weight="600">mart schema</text>
+    <rect x="1196" y="96" width="212" height="129" rx="0" fill="#fdfafe" stroke="#c79ed0" stroke-width="1.5" />
+    <rect x="1512" y="12" width="230" height="80" rx="0" fill="#f7f9fc" stroke="#7e8a9e" stroke-width="1.5" />
+    <text x="1627" y="40" text-anchor="middle" font-size="18" font-weight="600">ops schema</text>
+    <text x="1627" y="69" text-anchor="middle" font-size="14" font-weight="400">heartbeat / latency / lag / logs</text>
+    <rect x="1512" y="173" width="230" height="88" rx="0" fill="#fff6f8" stroke="#d46a87" stroke-width="1.5" />
+    <text x="1627" y="204" text-anchor="middle" font-size="18" font-weight="600">qa schema</text>
+    <text x="1627" y="237" text-anchor="middle" font-size="15" font-weight="400">bad_row / live_issue / eval</text>
+    <path d="M228 99 H356" fill="none" stroke="#778296" stroke-width="1.5" marker-end="url(#gray)" />
+    <text x="292" y="88" text-anchor="middle" font-size="13" font-weight="400">consumer write</text>
+    <path d="M228 204 H294 V144 H356" fill="none" stroke="#778296" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#gray)" />
+    <text x="283" y="193" text-anchor="middle" font-size="12" font-weight="400">QA comparison</text>
+    <path d="M592 130 H770" fill="none" stroke="#249452" stroke-width="1.5" marker-end="url(#green)" />
+    <text x="681" y="119" text-anchor="middle" font-size="14" font-weight="400">promotion_id FK</text>
+    <path d="M592 170 H650 V268 H1136 V130 H1184" fill="none" stroke="#778296" stroke-width="1.5" marker-end="url(#gray)" />
+    <text x="920" y="261" text-anchor="middle" font-size="13" font-weight="400">feature workers</text>
+    <path d="M592 83 H626 V12 H1512" fill="none" stroke="#778296" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#gray)" />
+    <text x="1075" y="26" text-anchor="middle" font-size="13" font-weight="400">ops evidence</text>
+    <path d="M228 246 V300 H1158 V202 H1184" fill="none" stroke="#778296" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#gray)" />
+    <text x="1038" y="293" text-anchor="middle" font-size="13" font-weight="400">warm-start</text>
+    <path d="M592 217 H625 V332 H1488 V241 H1512" fill="none" stroke="#778296" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#gray)" />
+    <text x="1068" y="326" text-anchor="middle" font-size="13" font-weight="400">quality evidence</text>
+    <path d="M1420 137 H1460 V54 H1512" fill="none" stroke="#778296" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#gray)" />
+    <text x="1464" y="127" text-anchor="middle" font-size="12" font-weight="400">inference log</text>
+    <path d="M1420 162 H1460 V208 H1512" fill="none" stroke="#778296" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#gray)" />
+    <text x="1463" y="186" text-anchor="middle" font-size="12" font-weight="400">eval evidence</text>
+    <text x="474" y="93" text-anchor="middle" font-size="15" font-weight="400">measurement_event</text>
+    <text x="474" y="117" text-anchor="middle" font-size="15" font-weight="400">measurement_policy</text>
+    <text x="474" y="141" text-anchor="middle" font-size="15" font-weight="400">1min / 15min / 1h</text>
+    <text x="474" y="165" text-anchor="middle" font-size="15" font-weight="400">bucket_queue</text>
+    <text x="474" y="189" text-anchor="middle" font-size="15" font-weight="400">promotion_check</text>
+    <text x="474" y="213" text-anchor="middle" font-size="15" font-weight="400">promotion_run</text>
+    <text x="1302" y="124" text-anchor="middle" font-size="14" font-weight="400">peak_feature_15min</text>
+    <text x="1302" y="151" text-anchor="middle" font-size="14" font-weight="400">pmax_forecast_15min</text>
+    <text x="1302" y="178" text-anchor="middle" font-size="14" font-weight="400">anomaly_feature_1h</text>
+    <text x="1302" y="205" text-anchor="middle" font-size="14" font-weight="400">anomaly_warning_1h</text>
+  </g>
+</svg>
