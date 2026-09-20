@@ -10,7 +10,7 @@
 
 ## 구성
 
-`index.html`, `original-extension.css`, `design-system.css`, `assets/`, `icons/`로 구성됩니다. 주요 내용과 아티팩트는 펼치기 동작 없이 확인할 수 있습니다.
+`index.html`은 소개와 프로젝트 요약입니다. 상세 사례는 `seorap.html`, `cms.html`, `cofathon.html`에서 제공합니다. `original-extension.css`, `design-system.css`, `project-pages.css`, `assets/`, `icons/`를 공유합니다. 주요 내용과 아티팩트는 펼치기 동작 없이 확인할 수 있습니다.
 
 ## 로컬 실행
 

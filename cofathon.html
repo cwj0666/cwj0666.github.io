@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cofathon — 최원준 · Product Engineer</title>
+<meta name="description" content="4시간 내 웰니스 기획전 자동화 MVP 구현. AI 작업 분담·독립 검토·통합 검증과 CJ올리브영 트랙 1위 수상 사례.">
+<link rel="canonical" href="https://cwj0666.github.io/cofathon.html">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="Cofathon — 최원준 · Product Engineer">
+<meta property="og:description" content="4시간 내 웰니스 기획전 자동화 MVP 구현. AI 작업 분담·독립 검토·통합 검증과 CJ올리브영 트랙 1위 수상 사례.">
+<meta property="og:url" content="https://cwj0666.github.io/cofathon.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  * { box-sizing: border-box; }
+  p, li, dd, dt, figcaption, h1, h2, h3 { text-wrap: pretty; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #EEF0F3;
+    background-image: radial-gradient(circle at 20% 0%, #F1F3F6 0%, #E6E9EE 55%, #DFE3E9 100%);
+    color: #323740;
+    font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  @media print { body { background: #FFFFFF; } .cms-doc { box-shadow: none !important; } }
+</style>
+
+<link rel="stylesheet" href="original-extension.css"><link rel="stylesheet" href="design-system.css?v=20260920-6">
+<link rel="stylesheet" href="project-pages.css?v=20260920-1">
+</head>
+<body class="project-detail detail-cofathon" style="margin:0; background:#E7EAEF;">
+
+<main class="cms-doc" style="width:1080px; max-width:100%; margin:40px auto; background:#FFFFFF; border:1px solid #E3E6EC; border-radius:16px; box-shadow:0 30px 80px -40px rgba(30,38,60,.22); padding:56px 68px 72px; overflow:hidden;">
+<nav class="project-navigation" aria-label="포트폴리오 페이지">
+  <a class="back-to-portfolio" href="index.html#project-summary"><span aria-hidden="true">←</span> 전체 포트폴리오</a>
+  <div class="project-navigation-links"><a href="seorap.html">서랍</a><a href="cms.html">CMS</a><a href="cofathon.html" aria-current="page">Cofathon</a></div>
+</nav>
+<article class="cofathon-project" id="cofathon" aria-labelledby="cofathon-title">
+  <header class="cofathon-cover">
+    <div class="cofathon-intro">
+      <p class="eyebrow">03 / AI DEVELOPMENT</p>
+      <h1 id="cofathon-title">Cofathon</h1>
+      <p class="cofathon-subtitle">웰니스 기획전 제작 자동화</p>
+      <p>기획 요청을 입력하면 상품 큐레이션과 문구를 생성하고, 운영자 검토를 거쳐 발행하는 MVP를 4시간 안에 구현했습니다.</p>
+    </div>
+    <dl class="cofathon-meta">
+      <div><dt>성과</dt><dd>CJ올리브영 트랙 1위</dd></div>
+      <div><dt>기간</dt><dd>2026.07 · 4시간 MVP 구현</dd></div>
+      <div><dt>담당</dt><dd>요구사항 정의 · AI 작업 분담 · 통합 검증</dd></div>
+      <div><dt>개발 도구</dt><dd>Claude Code</dd></div>
+    </dl>
+  </header>
+
+  <section class="cofathon-harness" aria-labelledby="cofathon-harness-title">
+    <div class="section-heading"><span class="section-no">01</span><div><h2 id="cofathon-harness-title">AI 하네스 · 작업 분담과 단계별 검증</h2><p class="section-lead">구현 전에 요구사항과 공통 데이터 형식을 검토하고, 파일별 담당을 정했습니다. 각 단계의 테스트와 동작 확인을 마친 뒤 다음 단계로 진행했습니다.</p></div></div>
+    <div class="cofathon-harness-layout">
+      <figure class="generated-diagram cofathon-flow"><div class="asset-heading"><img class="ui-icon" src="icons/ui/workflow.svg" alt="" width="22" height="22"><h3>계획 검토부터 통합 검증까지</h3></div>
+        <picture><source media="(max-width: 600px)" srcset="assets/cofathon-harness-mobile.png?v=ds1" width="948" height="1659">
+        <img src="assets/cofathon-harness.png?v=ds1" width="936" height="1681" alt="개발 하네스 흐름: 범위와 완료 기준 정의, 독립 리뷰어 두 개의 계획 검토와 지적 반영, 공유 계약 확정과 파일 소유권 분리. 운영자 화면, 고객 화면·반응 처리, 외부 데이터 연결 세 작업을 병렬로 진행한 뒤 타입 검사·회귀 테스트로 통합 검증하고 동작 확인 후 커밋합니다." loading="lazy" decoding="async">
+        </picture>
+        <figcaption class="asset-caption">프로젝트 실행 기록 · 독립 검토와 병렬 작업의 통합 과정</figcaption>
+      </figure>
+      <div class="cofathon-decisions">
+        <section><span class="number">범위 설정</span><h3>외부 데이터 연결부터 발행까지의 완료 기준</h3><p>실제 RSS·LLM 연결부터 운영자 검토·발행, 고객 반응 재적용까지를 완료 기준으로 정했습니다. 제출 전에는 전체 흐름의 동작과 문서·화면 캡처를 점검했습니다.</p></section>
+        <section><span class="number">계획 검토</span><h3>구현 계획의 누락과 판정 기준 보완</h3><p>santa-method의 독립 검토에서 조사 주제 생성 단계의 누락과 중복 상품 판정 문제를 확인했습니다. 두 항목을 보완하고 총 세 차례 검토를 거쳐 구현 계획을 확정했습니다.</p>
+          <dl class="skill-notes"><div><dt>santa-method</dt><dd>서로의 평가를 보지 않는 두 AI 리뷰어가 같은 기준으로 검토하고, 수정 후 다시 확인하는 스킬입니다.</dd></div></dl>
+        </section>
+        <section><span class="number">병렬 작업</span><h3>공통 데이터 형식과 파일별 작업 분담</h3><p>운영자 화면·고객 화면과 반응 처리·외부 데이터 연결을 세 작업으로 나누고, 담당 파일을 지정했습니다. 공통 데이터 형식인 <code>contracts.ts</code>의 변경은 메인 세션에서 조정했습니다.</p>
+          <dl class="skill-notes">
+            <div><dt>plan-orchestrate</dt><dd>구현 계획을 단계로 나누고 구현·검토 담당과 작업 순서를 정하는 스킬입니다.</dd></div>
+            <div><dt>parallel-execution-optimizer</dt><dd>동시에 진행할 작업을 구분하고 수정 파일과 통합 검증 기준을 정하는 스킬입니다.</dd></div>
+          </dl>
+        </section>
+        <section><span class="number">통합 기준</span><h3>단계별 검증과 변경 이력 관리</h3><p>각 단계에서 타입 검사·회귀 테스트·동작 확인을 마친 변경을 커밋했습니다. 병합 검토 후에는 요청 크기 제한을 추가하고, 초안 수정 시 고객 반응 정보가 유지되도록 보완했습니다.</p></section>
+      </div>
+    </div>
+  </section>
+
+  <section class="cofathon-review-example" aria-labelledby="cofathon-review-title">
+    <div><span class="number">02 / 검토 결과를 코드로 반영한 사례</span><h2 id="cofathon-review-title">상품 식별 기준 보완과 중복 추천 방지</h2><p>상품 번호만 비교하면 이름·브랜드가 같은 두 항목도 별도 상품으로 추천될 수 있었습니다. 독립 검토에서 이 문제를 확인해 상품 번호 또는 정규화한 이름·브랜드가 같으면 중복으로 판정하도록 수정했습니다. 회귀 테스트에는 두 항목 중 추천 가능한 상품 하나만 남는 조건을 추가했습니다.</p></div>
+    <figure class="cofathon-test-evidence"><figcaption><strong>회귀 테스트 · 실제 코드 발췌</strong><span>tests/unit/curate.test.ts</span></figcaption><p class="cofathon-test-pair"><code>OY0034</code><span>이름·브랜드 동일</span><code>OY0044</code></p><pre><code>expect(inEligible)
+  .toHaveLength(1);</code></pre><p>검증 조건: 두 항목 중 추천 가능한 상품 한 개만 유지</p></figure>
+  </section>
+</article>
+<nav class="project-navigation project-navigation-bottom" aria-label="다른 프로젝트와 전체 목록">
+  <a class="back-to-portfolio" href="index.html#project-summary"><span aria-hidden="true">←</span> 전체 포트폴리오</a>
+  <div class="project-navigation-links"><a href="seorap.html">서랍</a><a href="cms.html">CMS</a><a href="cofathon.html" aria-current="page">Cofathon</a></div>
+</nav>
+<footer class="profile-footer" aria-label="프로필과 연락처">
+  <div class="footer-item footer-identity"><img src="icons/ui/user-round.svg" width="22" height="22" alt=""><div><b>최원준</b><span>Product Engineer</span></div></div>
+  <a class="footer-item footer-email" href="mailto:cwj0666@gmail.com"><img src="icons/ui/mail.svg" width="22" height="22" alt=""><span>cwj0666@<wbr>gmail.com</span></a>
+  <a class="footer-item footer-github" href="https://github.com/cwj0666"><img src="icons/github.svg" width="22" height="22" alt=""><span>github.com/<wbr>cwj0666</span></a>
+</footer></main>
+
+</body>
+</html>

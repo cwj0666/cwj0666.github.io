@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CMS — 최원준 · Product Engineer</title>
+<meta name="description" content="에너지 설비 데이터 플랫폼. PostgreSQL 스키마와 수집·집계 파이프라인 설계, 운영 관측과 적재 장애 복구 사례.">
+<link rel="canonical" href="https://cwj0666.github.io/cms.html">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="CMS — 최원준 · Product Engineer">
+<meta property="og:description" content="에너지 설비 데이터 플랫폼. PostgreSQL 스키마와 수집·집계 파이프라인 설계, 운영 관측과 적재 장애 복구 사례.">
+<meta property="og:url" content="https://cwj0666.github.io/cms.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  * { box-sizing: border-box; }
+  p, li, dd, dt, figcaption, h1, h2, h3 { text-wrap: pretty; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #EEF0F3;
+    background-image: radial-gradient(circle at 20% 0%, #F1F3F6 0%, #E6E9EE 55%, #DFE3E9 100%);
+    color: #323740;
+    font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  @media print { body { background: #FFFFFF; } .cms-doc { box-shadow: none !important; } }
+</style>
+
+<link rel="stylesheet" href="original-extension.css"><link rel="stylesheet" href="design-system.css?v=20260920-6">
+<link rel="stylesheet" href="project-pages.css?v=20260920-1">
+</head>
+<body class="project-detail detail-cms" style="margin:0; background:#E7EAEF;">
+
+<main class="cms-doc" style="width:1080px; max-width:100%; margin:40px auto; background:#FFFFFF; border:1px solid #E3E6EC; border-radius:16px; box-shadow:0 30px 80px -40px rgba(30,38,60,.22); padding:56px 68px 72px; overflow:hidden;">
+<nav class="project-navigation" aria-label="포트폴리오 페이지">
+  <a class="back-to-portfolio" href="index.html#project-summary"><span aria-hidden="true">←</span> 전체 포트폴리오</a>
+  <div class="project-navigation-links"><a href="seorap.html">서랍</a><a href="cms.html" aria-current="page">CMS</a><a href="cofathon.html">Cofathon</a></div>
+</nav>
+<section style="margin-top:64px; background:#F0F2F6; border:1px solid #E1E5EB; border-radius:16px; padding:38px 40px; display:grid; grid-template-columns:1fr 360px; gap:40px; align-items:center;" class="project-cover cms-cover" id="cms">
+    <div><p class="eyebrow">02 / DATA PLATFORM</p><h1 class="project-name"><span class="project-wordmark">CMS</span><span class="project-subtitle">에너지 설비 데이터 수집·검증 플랫폼</span></h1><p class="cover-description">계량 이벤트를 수집·집계하고 품질 기준에 따라 승인해 모델과 대시보드에 제공합니다.</p><span class="status">과거 데이터 재생 기반 팀 프로젝트</span></div>
+    <dl style="margin:0; display:grid; gap:14px;" class="project-meta"><div><dt>기간</dt><dd>2026.05–06</dd></div><div><dt>담당</dt><dd>DB 설계 · 데이터 파이프라인 · <span class="keep-phrase">운영 관측</span></dd></div><div><dt>환경</dt><dd>로컬 PC 3대 + AWS DB</dd></div><div><dt>사용 기술</dt><dd class="tech-items"><span class="tech-item"><img src="icons/python.svg" alt="" width="23" height="23"><span>Python</span></span><span class="tech-item"><img src="icons/apachekafka.svg" alt="" width="23" height="23"><span>Kafka</span></span><span class="tech-item"><img src="icons/postgresql.svg" alt="" width="23" height="23"><span>PostgreSQL</span></span><span class="tech-item"><img src="icons/docker.svg" alt="" width="23" height="23"><span>Docker</span></span><span class="tech-item"><img src="icons/grafana.svg" alt="" width="23" height="23"><span>Grafana</span></span><span class="tech-item"><img src="icons/prometheus.svg" alt="" width="23" height="23"><span>Prometheus</span></span></dd></div></dl>
+  </section>
+
+  <section id="cms-direction" class="chapter "><div class="section-heading"><span class="section-no">01</span><div><h2>계량 이벤트 수집을 위한 DB·파이프라인 재설계</h2><p class="section-lead">정제 파일 분석에 계량 이벤트의 지속적인 수집을 추가했습니다. DB·파이프라인 설계도로 변경 범위를 공유하고 수집 구조를 구현했습니다.</p></div></div><div class="comparison compact-reading"><div><span class="label">초기 계획</span><h3>정제 파일 분석</h3><p>파일 입력 → 모델 분석 → 대시보드</p></div><div class="selected"><span class="label">확장한 범위</span><h3>계량 이벤트 처리</h3><p>수집 → 검증·집계 → 모델 입력·화면</p></div></div></section>
+<section id="cms-schema" class="chapter "><div class="section-heading"><span class="section-no">02</span><div><h2>데이터 상태별 스키마와 권한 분리</h2><p class="section-lead">데이터 처리 상태에 따라 6개 스키마를 구분하고 역할별 쓰기 권한을 설계했습니다. 승인된 관측값은 전용 승격 워커가 반영합니다.</p></div></div><figure style="margin:18px 0 0;" class="original-figure boundary-figure"><div class="asset-heading"><img class="ui-icon" src="icons/ui/database.svg" alt="" width="22" height="22"><h3>스키마별 데이터 상태와 쓰기 권한</h3></div>
+      <img src="assets/cms-schema-boundary-vector.svg?v=source-verified" width="1760" height="348" alt="CMS 스키마 경계: Kafka에서 live로 수집하고 승인된 관측값을 canonical에 반영합니다. live의 집계로 모델 특성을 생성해 mart에 저장합니다. reference는 품질 비교와 초기 입력에, ops와 qa는 운영·품질 기록에 사용합니다.">
+    <figcaption class="asset-caption">DB 설계 요약 · 관측값 승인 경로와 모델 특성 생성 경로</figcaption></figure>
+    <div class="schema-focus" aria-label="스키마 설계도 핵심 영역">
+      <figure><div class="asset-heading"><img class="ui-icon" src="icons/ui/database.svg" alt="" width="22" height="22"><h3>live · 승인 전 데이터</h3></div>
+        <img src="assets/cms-schema-live.svg?v=source-verified" width="260" height="246" alt="live 스키마: 이벤트, 시간 단위 집계, 작업 큐, 승인 검사와 승인 이력">
+        <figcaption class="asset-caption">수신 이벤트와 집계 후보, 승인 검사·이력을 관리합니다.</figcaption>
+      </figure>
+      <figure><div class="asset-heading"><img class="ui-icon" src="icons/ui/database.svg" alt="" width="22" height="22"><h3>canonical · 승인된 관측값</h3></div>
+        <img src="assets/cms-schema-canonical.svg?v=source-verified" width="260" height="246" alt="canonical 스키마: 승인된 1분·15분·1시간 집계 데이터">
+        <figcaption class="asset-caption">승인된 관측값과 승인 실행 이력을 연결해 저장합니다.</figcaption>
+      </figure>
+    </div>
+    <figure class="db-artifact" aria-labelledby="cms-schema-title">
+  <figcaption class="db-artifact-heading">
+    <div><span class="db-kicker">DATABASE DESIGN</span><h3 id="cms-schema-title">원본 이벤트·처리 정책 분리와 집계 결과의 정책 이력 관리</h3></div>
+    <p>핵심 테이블 3개 · PostgreSQL<br>컬럼·키·인덱스 발췌</p>
+  </figcaption>
+
+  <div class="db-source-tables">
+    <section class="db-table" aria-labelledby="db-event-title">
+      <header><span class="db-step">01</span><div><h4 id="db-event-title">원본 이벤트</h4><code>live.<wbr></wbr>measurement_<wbr></wbr>event</code></div></header>
+      <dl class="db-fields">
+        <div><dt><code>event_<wbr></wbr>id</code><span class="db-key">PK</span><span class="db-type">text</span></dt><dd>수신 이벤트의 기본키</dd></div>
+        <div><dt><code>meter_<wbr></wbr>urn</code><code>measurement</code><code>event_<wbr></wbr>ts</code></dt><dd>계량기 · 측정 항목 · 이벤트 발생 시각</dd></div>
+        <div><dt><code>business_<wbr></wbr>idempotency_<wbr></wbr>key</code><span class="db-type">text · NOT NULL</span></dt><dd>업무 기준 중복 식별값 보관</dd></div>
+        <div><dt><code>kafka_<wbr></wbr>topic</code><code>kafka_<wbr></wbr>partition</code><code>kafka_<wbr></wbr>offset</code></dt><dd>수신 메시지 위치 추적</dd></div>
+      </dl>
+      <div class="db-index"><b>조회 인덱스</b><p class="db-column-sequence"><code>meter_<wbr></wbr>urn</code><code>measurement</code><code>event_<wbr></wbr>ts</code></p><span>계량기·측정 항목의 시간 범위 조회</span></div>
+    </section>
+
+    <section class="db-table" aria-labelledby="db-policy-title">
+      <header><span class="db-step">02</span><div><h4 id="db-policy-title">처리 정책</h4><code>live.<wbr></wbr>measurement_<wbr></wbr>policy</code></div></header>
+      <dl class="db-fields">
+        <div><dt><code>policy_<wbr></wbr>id</code><span class="db-key">PK</span><span class="db-type">bigint</span></dt><dd>처리 정책의 기본키</dd></div>
+        <div><dt><code>effective_<wbr></wbr>from</code><code>effective_<wbr></wbr>to</code></dt><dd>정책의 적용 기간</dd></div>
+        <div><dt><code>expected_<wbr></wbr>points_<wbr></wbr>policy</code><span class="db-type">jsonb</span><code>aggregation_<wbr></wbr>policy</code><span class="db-type">text</span></dt><dd>기대 수집 건수와 집계 방식</dd></div>
+        <div><dt><code>coverage_<wbr></wbr>threshold</code><code>policy_<wbr></wbr>version</code></dt><dd>수집 충족 기준과 정책 버전</dd></div>
+      </dl>
+      <div class="db-index"><b>정책 조회 인덱스</b><p class="db-column-sequence"><code>meter_<wbr></wbr>urn</code><code>measurement</code><code>enabled</code><code>effective_<wbr></wbr>from</code><code>effective_<wbr></wbr>to</code></p><span>계량기·측정 항목·유효 기간으로 정책 선택</span></div>
+    </section>
+  </div>
+
+  <div class="db-processing-link" aria-label="논리적 처리 흐름"><span>이벤트 수신</span><b>＋</b><span>해당 시점의 정책 조회</span><b>↓</b><span>1분 구간으로 집계</span></div>
+
+  <section class="db-table db-rollup" aria-labelledby="db-rollup-title">
+    <header><span class="db-step">03</span><div><h4 id="db-rollup-title">1분 집계 후보</h4><code>live.<wbr></wbr>measurement_<wbr></wbr>1min</code></div></header>
+    <div class="db-rollup-body">
+      <div class="db-composite-key"><span class="db-key">복합 PK</span><p class="db-column-sequence"><code>meter_<wbr></wbr>urn</code><code>measurement</code><code>resolution</code><code>bucket_<wbr></wbr>ts</code><code>policy_<wbr></wbr>version</code></p><p>같은 시간 구간의 결과를 정책 버전별로 구분합니다.</p></div>
+      <dl class="db-fields">
+        <div><dt><code>expected_<wbr></wbr>points</code><code>observed_<wbr></wbr>points</code><code>coverage_<wbr></wbr>ratio</code></dt><dd>기대 건수 · 관측 건수 · 수집 충족률</dd></div>
+        <div><dt><code>source_<wbr></wbr>event_<wbr></wbr>ids</code><code>provenance</code><code>policy_<wbr></wbr>id</code></dt><dd>원본 이벤트와 적용 정책 추적</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="db-promotion-reference">
+    <div><span class="db-key db-ref-key">DBML Ref</span><h4>승인 이력과 최종 데이터의 관계</h4></div>
+    <div class="db-ref-nodes"><p><code>live.<wbr></wbr>promotion_<wbr></wbr>run</code><span>promotion_id · PK</span></p><b aria-label="일대다 관계">1 → N</b><p><code>canonical.<wbr></wbr>measurement_<wbr></wbr>1min</code><span>promotion_id</span></p></div>
+  </div>
+  <p class="db-source-note">점선은 정책 조회·집계의 처리 흐름입니다. 하단은 DBML에 선언된 참조 관계입니다.<br>출처: <code>live_<wbr></wbr>contract.<wbr></wbr>dbml</code> · 2026.06.24 기준 설계 기록</p>
+</figure>
+<figure class="full-data-flow" id="cms-data-design"><div class="asset-heading"><img class="ui-icon" src="icons/ui/workflow.svg" alt="" width="22" height="22"><h3>수집부터 승인까지의 전체 데이터 설계</h3></div><img src="assets/cms-data-flow.svg" alt="CMS 전체 데이터 흐름 설계도 원본. 정책, 수집, 집계, 검증, 승인 관계"><figcaption class="asset-caption">프로젝트 설계 원본 · 수집·정책·집계·검증·승인의 데이터 관계</figcaption></figure><div class="data-scale compact-reading"><span class="label">데이터 규모 · PostgreSQL 카탈로그 추정치</span><div><p><strong>1,097만 행</strong><span>측정 이벤트 원장</span></p><p><strong>2.68억 행</strong><span>보정·리샘플 기준 데이터</span></p></div><p class="caption">당시 PostgreSQL 카탈로그 스냅숏에서 확인한 추정치입니다.</p></div></section>
+<section class="chapter architecture" id="cms-architecture"><div class="section-heading"><span class="section-no">03</span><div><h2>배포 환경과 서비스별 역할</h2><p class="section-lead">로컬 장비의 자원 제약을 고려해 DB를 AWS에 배치했습니다. 수집·모델 운영·관측은 PC 3대에 분리했습니다.</p></div></div><figure style="margin:18px 0 0;" class="original-figure"><div class="asset-heading"><img class="ui-icon" src="icons/ui/workflow.svg" alt="" width="22" height="22"><h3>서비스 구성과 데이터 경로</h3></div>
+      <img src="assets/cms_architecture_v5.svg" alt="CMS 전체 데이터 플랫폼 아키텍처" style="display:block; width:100%; height:auto; background:#FFFFFF; border:1px solid #E9ECF1; border-radius:12px;">
+    <figcaption class="asset-caption">프로젝트 아키텍처 · PC별 서비스 구성과 데이터 경로</figcaption></figure>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:12px;" class="runtime-grid">
+      <article style="border-top:3px solid #CBD1DB; padding-top:14px;" class="runtime-item">
+        <h3>PC1 / 수집·전처리</h3>
+        <p>데이터 재생·수집과 전처리를 실행합니다. Kafka·데이터 워커·API·UI를 배치했습니다.</p>
+      </article>
+      <article style="border-top:3px solid #CBD1DB; padding-top:14px;" class="runtime-item">
+        <h3>AWS / PostgreSQL</h3>
+        <p>PostgreSQL · TimescaleDB · pgvector · pg_stat_statements 기반으로 저장 계층을 구성했습니다.</p>
+      </article>
+      <article style="border-top:3px solid #CBD1DB; padding-top:14px;" class="runtime-item">
+        <h3>PC3 / 예측·모델 운영</h3>
+        <p>최대 수요 예측(P-Max)·이상 탐지 워커와 모델 서빙 API를 배치했습니다. exporter로 운영 지표를 제공합니다.</p>
+      </article>
+      <article style="border-top:3px solid #CBD1DB; padding-top:14px;" class="runtime-item">
+        <h3>PC2 / 운영 모니터링</h3>
+        <p>Prometheus로 지표를 수집하고, Grafana 대시보드·알림 뷰에서 워커 가동 상태와 처리 현황을 확인합니다.</p>
+      </article>
+    </div>
+  </section>
+<section id="cms-observability" class="chapter "><div class="section-heading"><span class="section-no">04</span><div><h2>수집·처리·적재 단계별 운영 모니터링</h2><p class="section-lead">수신 여부·처리 대기량·DB 반영 시각을 각각 계측해 수집·처리·적재 단계의 상태를 확인했습니다.</p></div></div><figure class="original-grafana"><div class="asset-heading"><img class="ui-icon" src="icons/ui/chart-no-axes-column.svg" alt="" width="22" height="22"><h3>데이터 파이프라인 운영 대시보드</h3></div><img src="assets/grafana.png" width="1919" height="1079" alt="CMS Grafana 데이터 파이프라인 운영 화면"><figcaption class="asset-caption">프로젝트 운영 화면 · 146ms는 마지막 적재 이후 경과 시간</figcaption></figure><div class="grafana-focus"><figure><div class="asset-heading"><img class="ui-icon" src="icons/ui/chart-no-axes-column.svg" alt="" width="22" height="22"><h3>파티션별 처리 대기량</h3></div><svg viewbox="644 715 632 135" role="img" aria-label="원본 Grafana의 파티션별 처리 대기량 확대"><image href="assets/grafana.png" width="1919" height="1079"></image></svg><figcaption>파티션별 대기량으로 처리 적체를 확인합니다.</figcaption></figure><figure><div class="asset-heading"><img class="ui-icon" src="icons/ui/database.svg" alt="" width="22" height="22"><h3>적재 단계별 마지막 처리 시각</h3></div><svg viewbox="7 868 632 132" role="img" aria-label="원본 Grafana의 적재 단계별 마지막 처리 시각 확대"><image href="assets/grafana.png" width="1919" height="1079"></image></svg><figcaption>적재·집계 단계별 마지막 처리 시각을 대조합니다.</figcaption></figure></div></section>
+<section class="case-section recovery-section" id="cms-recovery" aria-labelledby="cms-recovery-title">
+  <header class="section-head">
+    <span class="eyebrow">05 / 적재 장애 복구</span>
+    <h2 id="cms-recovery-title">토픽 재생성에 따른 식별자 충돌과 적재 복구</h2>
+    <p>컨슈머가 실행 중인 상태에서 DB 적재가 중단됐습니다. 토픽 식별자·파티션·오프셋의 충돌을 확인하고, 원장 적재와 집계 갱신 여부로 복구를 검증했습니다.</p>
+  </header>
+  <div class="recovery-layout">
+    <figure class="recovery-history">
+      <figcaption class="artifact-title">당시 장애 · 복구 순서</figcaption>
+      <ol class="incident-flow">
+        <li><span class="step-number" aria-hidden="true">01</span><div><h3>토픽 재생성</h3><p>새 토픽의 오프셋이 0부터 시작했습니다.</p></div></li>
+        <li><span class="step-number" aria-hidden="true">02</span><div><h3>DB 식별자 충돌</h3><p>기존 토픽 식별자·파티션·오프셋 조합과 겹치면서 신규 적재가 중단됐습니다.</p></div></li>
+        <li><span class="step-number" aria-hidden="true">03</span><div><h3>복구 세대 분리</h3><p><code>KAFKA_TOPIC_IDENTITY</code>에 복구 세대 값을 적용했습니다.</p></div></li>
+        <li><span class="step-number" aria-hidden="true">04</span><div><h3>DB 반영 확인</h3><p>원장 수집 시각과 1분·15분·1시간 집계의 갱신 시각을 확인했습니다.</p></div></li>
+      </ol>
+    </figure>
+    <div class="recovery-current">
+      <span class="state-label">현재 코드의 적재 기준</span>
+      <h3>이벤트 식별자와 전송 이력 분리</h3>
+      <dl class="identity-pair">
+        <div><dt>이벤트 중복 판단</dt><dd><code>event_<wbr></wbr>id</code><span>원천 시스템·원천 이벤트 ID를 우선 사용합니다.</span></dd></div>
+        <div><dt>전송·재생 이력 추적</dt><dd><code>topic · partition · offset</code><span>수신 위치와 처리 진행을 기록합니다.</span></dd></div>
+      </dl>
+      <pre class="code-proof"><code>ON CONFLICT (event_id) DO NOTHING</code></pre>
+      <p class="evidence-note">현재 저장 코드 기준 · 원천 이벤트 ID가 없으면 원본 해시·계량기·측정 항목·시각으로 식별합니다.</p>
+    </div>
+  </div>
+</section>
+<section class="chapter" id="cms-query"><div class="section-heading"><span class="section-no">06</span><div><h2>대시보드 조회 범위와 DB 권한 제한</h2><p class="section-lead">전체 기간의 원장을 조회하는 대시보드에서 패널 오류와 타임아웃이 발생했습니다. 조회 기간·반환 행 수·실행 시간을 제한하고, 읽기 전용 조회 역할을 설계했습니다.</p></div></div><div class="sql-comparison compact-reading"><div class="code-panel code-before"><div class="code-panel-heading"><span>변경 전 · 전체 기간</span><span class="code-language">SQL</span></div><pre><code><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text"><span class="syntax-comment">-- 전체 기간 정렬 조회</span></span></span><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text"><span class="syntax-keyword">SELECT</span></span></span><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text">  meter_urn, measurement,</span></span><span class="code-line removed"><span class="diff-mark" aria-hidden="true">−</span><span class="line-text">  event_ts, value_numeric</span></span><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text"><span class="syntax-keyword">FROM</span> live.measurement_event</span></span><span class="code-line removed"><span class="diff-mark" aria-hidden="true">−</span><span class="line-text"><span class="syntax-keyword">ORDER BY</span> event_ts <span class="syntax-keyword">DESC</span>;</span></span></code></pre></div><div class="code-panel code-after"><div class="code-panel-heading"><span>변경 후 · 수집 시각 기준</span><span class="code-language">SQL</span></div><pre><code><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text"><span class="syntax-comment">-- 조회 범위와 실행 시간 제한</span></span></span><span class="code-line added"><span class="diff-mark" aria-hidden="true">+</span><span class="line-text"><span class="syntax-keyword">SET</span> statement_timeout</span></span><span class="code-line added"><span class="diff-mark" aria-hidden="true">+</span><span class="line-text">  = <span class="syntax-string">&#x27;5s&#x27;</span>;</span></span><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text"><span class="syntax-keyword">SELECT</span></span></span><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text">  meter_urn, measurement,</span></span><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text">  event_ts, value_numeric,</span></span><span class="code-line added"><span class="diff-mark" aria-hidden="true">+</span><span class="line-text">  consumed_at</span></span><span class="code-line "><span class="diff-mark" aria-hidden="true"></span><span class="line-text"><span class="syntax-keyword">FROM</span> live.measurement_event</span></span><span class="code-line added"><span class="diff-mark" aria-hidden="true">+</span><span class="line-text"><span class="syntax-keyword">WHERE</span> consumed_at &gt;=</span></span><span class="code-line added"><span class="diff-mark" aria-hidden="true">+</span><span class="line-text">  <span class="syntax-keyword">now</span>() - <span class="syntax-keyword">interval</span> <span class="syntax-string">&#x27;6 hours&#x27;</span></span></span><span class="code-line added"><span class="diff-mark" aria-hidden="true">+</span><span class="line-text"><span class="syntax-keyword">ORDER BY</span> consumed_at <span class="syntax-keyword">DESC</span></span></span><span class="code-line added"><span class="diff-mark" aria-hidden="true">+</span><span class="line-text"><span class="syntax-keyword">LIMIT</span> <span class="syntax-number">500</span>;</span></span></code></pre></div></div><div class="decision-strip compact-reading"><div><b>조회 기간</b><span>최근 6시간</span></div><div><b>반환 범위</b><span>최대 500행</span></div><div><b>실행 제한</b><span>5초</span></div></div><p class="caption compact-reading">조회 조건 예시 · 최근 적재 여부는 DB 수집 시각인 consumed_at을 기준으로 확인했습니다.</p></section>
+<nav class="project-navigation project-navigation-bottom" aria-label="다른 프로젝트와 전체 목록">
+  <a class="back-to-portfolio" href="index.html#project-summary"><span aria-hidden="true">←</span> 전체 포트폴리오</a>
+  <div class="project-navigation-links"><a href="seorap.html">서랍</a><a href="cms.html" aria-current="page">CMS</a><a href="cofathon.html">Cofathon</a></div>
+</nav>
+<footer class="profile-footer" aria-label="프로필과 연락처">
+  <div class="footer-item footer-identity"><img src="icons/ui/user-round.svg" width="22" height="22" alt=""><div><b>최원준</b><span>Product Engineer</span></div></div>
+  <a class="footer-item footer-email" href="mailto:cwj0666@gmail.com"><img src="icons/ui/mail.svg" width="22" height="22" alt=""><span>cwj0666@<wbr>gmail.com</span></a>
+  <a class="footer-item footer-github" href="https://github.com/cwj0666"><img src="icons/github.svg" width="22" height="22" alt=""><span>github.com/<wbr>cwj0666</span></a>
+</footer></main>
+
+</body>
+</html>

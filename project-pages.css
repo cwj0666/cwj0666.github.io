@@ -1,0 +1,56 @@
+/* Shared navigation and overview; project case-study assets retain their design. */
+.project-navigation { display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; padding: 0 0 24px; margin-bottom: 32px; border-bottom: 1px solid var(--line); }
+.project-navigation a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--sub); font-size: 17px; font-weight: 600; text-decoration: none; }
+.project-navigation a:hover { color: var(--blue); }
+.project-navigation .back-to-portfolio { color: var(--ink); }
+.project-navigation-links { display: flex; align-items: center; gap: 28px; }
+.project-navigation-links a[aria-current="page"] { color: var(--blue); box-shadow: inset 0 -2px var(--blue); }
+.project-navigation-bottom { margin: 48px 0 0; padding: 24px 0; border-top: 1px solid var(--line); border-bottom: 0; }
+.project-detail .cms-cover { margin-top: 0 !important; }
+.project-detail .cofathon-project { margin-top: 0 !important; padding-top: 0; }
+.project-detail .cofathon-cover h1 { font-size: 43px; margin: 10px 0; }
+.project-detail .profile-footer { margin-top: 0; }
+.keep-phrase { display: inline-block; }
+.portfolio-overview .project-summary { max-width: 1280px; margin-bottom: 32px; }
+.portfolio-overview .overview-project { position: relative; grid-template-columns: minmax(0, .85fr) minmax(0, 1.55fr); align-items: center; gap: 48px; padding: 36px 0; }
+.legacy-project-anchor { position: absolute; top: 0; width: 0; height: 0; overflow: hidden; }
+.overview-identity { min-width: 0; }
+.portfolio-overview .summary-project { display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 4px 12px; }
+.summary-project h3 a { color: var(--ink); text-decoration: none; }
+.summary-project h3 a:hover { color: var(--blue); text-decoration: underline; }
+.portfolio-overview .overview-period { grid-column: 2; margin: 4px 0 0; font-size: 15px; font-variant-numeric: tabular-nums; }
+.project-preview { margin-top: 20px; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--wash); }
+.project-preview figcaption { border-top: 1px solid var(--line); background: #fff; padding: 10px 14px; font-size: 14px; text-align: left; }
+.preview-phones { display: flex; justify-content: center; gap: 16px; padding: 20px; }
+.preview-phones .app-screen-crop { width: 132px; flex: 0 1 132px; }
+.preview-image { display: flex; align-items: center; justify-content: center; padding: 16px; }
+.preview-image>img { display: block; width: 100%; height: auto; border-radius: 4px; }
+.preview-cofathon .preview-image { background: #fff; }
+.preview-cofathon .preview-image>img { width: auto; max-width: 100%; height: 268px; object-fit: contain; }
+.portfolio-overview .overview-purpose { color: var(--ink); font-size: 21px; line-height: 1.65; margin-bottom: 12px; }
+.portfolio-overview .overview-role { color: var(--sub); font-size: 16px; line-height: 1.65; margin-bottom: 24px; }
+.overview-role>span { color: var(--ink); font-weight: 650; margin-right: 12px; }
+.overview-project .project-status-row { margin: -12px 0 24px; }
+.portfolio-overview .summary-result h4 { padding-top: 20px; border-top: 1px solid var(--line); }
+.case-study-link { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; margin-top: 20px; color: var(--blue); font-size: 17px; font-weight: 650; text-decoration: underline; text-underline-offset: 5px; }
+.case-study-link:hover { color: #253e97; }
+@media(max-width:900px) {
+  .portfolio-overview .overview-project { grid-template-columns: minmax(0,.85fr) minmax(0,1.15fr); gap: 28px; }
+  .preview-phones { gap: 10px; padding: 14px; }
+}
+@media(max-width:650px) {
+  .portfolio-overview .overview-project { grid-template-columns: minmax(0,1fr); gap: 24px; padding: 28px 0; }
+  .project-preview { max-width: 400px; }
+  .portfolio-overview .overview-purpose { font-size: 20px; }
+  .portfolio-overview .summary-result h4 { font-size: 22px; }
+  .project-navigation { flex-wrap: wrap; gap: 8px; margin-bottom: 24px; padding-bottom: 16px; }
+  .project-navigation-links { width: 100%; justify-content: space-between; gap: 12px; }
+  .project-navigation a { font-size: 16px; }
+  .project-navigation-bottom { margin-top: 32px; margin-bottom: 0; padding-top: 16px; }
+  .project-detail .cofathon-cover h1 { font-size: 36px; }
+}
+@media print {
+  .project-navigation { display: none; }
+  .overview-project { break-inside: avoid; }
+  .case-study-link { text-decoration: none; }
+}

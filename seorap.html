@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서랍 — 최원준 · Product Engineer</title>
+<meta name="description" content="뷰티 제품·루틴 관리 서비스. 고객 페르소나, OCR 파인튜닝·피부 모델 평가, 카탈로그 정제와 조회 성능 개선 사례.">
+<link rel="canonical" href="https://cwj0666.github.io/seorap.html">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="서랍 — 최원준 · Product Engineer">
+<meta property="og:description" content="뷰티 제품·루틴 관리 서비스. 고객 페르소나, OCR 파인튜닝·피부 모델 평가, 카탈로그 정제와 조회 성능 개선 사례.">
+<meta property="og:url" content="https://cwj0666.github.io/seorap.html">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  * { box-sizing: border-box; }
+  p, li, dd, dt, figcaption, h1, h2, h3 { text-wrap: pretty; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #EEF0F3;
+    background-image: radial-gradient(circle at 20% 0%, #F1F3F6 0%, #E6E9EE 55%, #DFE3E9 100%);
+    color: #323740;
+    font-family: "Pretendard Variable", Pretendard, "Noto Sans KR", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  @media print { body { background: #FFFFFF; } .cms-doc { box-shadow: none !important; } }
+</style>
+
+<link rel="stylesheet" href="original-extension.css"><link rel="stylesheet" href="design-system.css?v=20260920-6">
+<link rel="stylesheet" href="project-pages.css?v=20260920-1">
+</head>
+<body class="project-detail detail-seorap" style="margin:0; background:#E7EAEF;">
+
+<main class="cms-doc" style="width:1080px; max-width:100%; margin:40px auto; background:#FFFFFF; border:1px solid #E3E6EC; border-radius:16px; box-shadow:0 30px 80px -40px rgba(30,38,60,.22); padding:56px 68px 72px; overflow:hidden;">
+<nav class="project-navigation" aria-label="포트폴리오 페이지">
+  <a class="back-to-portfolio" href="index.html#project-summary"><span aria-hidden="true">←</span> 전체 포트폴리오</a>
+  <div class="project-navigation-links"><a href="seorap.html" aria-current="page">서랍</a><a href="cms.html">CMS</a><a href="cofathon.html">Cofathon</a></div>
+</nav>
+<div class="project-group seorap-project"><article class="page" id="seorap"><section class="project-cover"><div class="eyebrow">01 / Seorap</div><h1 class="project-name"><span class="project-wordmark">서랍</span><span class="project-subtitle">보유 제품과 사용 루틴 관리</span></h1><p>보유 제품의 역할·전성분·사용 평가를 통합해 제품 비교와 루틴 관리를 지원합니다.</p><div class="project-status-row"><span class="status">개발 단계 · 팀 내부 사용 테스트</span><a class="project-service-link service-icon-link" href="https://seorap-beauty.vercel.app/" target="_blank" rel="noopener noreferrer" aria-label="서랍 서비스 열기 (새 탭)" title="서랍 서비스 열기 · 새 탭"><img src="icons/ui/external-link.svg" alt="" width="22" height="22"></a></div><dl class="meta"><div><dt>기간</dt><dd>2026.08~</dd></div><div><dt>팀</dt><dd>2인 · 프론트엔드 협업</dd></div><div><dt>담당</dt><dd>서비스 기획 · 백엔드 · 데이터 처리 · 모델</dd></div></dl><div class="project-tech"><b>프로젝트 사용 기술</b><p class="tech-items"><span class="tech-item"><img src="icons/python.svg" alt="" width="23" height="23"><span>Python</span></span><span class="tech-item"><img src="icons/fastapi.svg" alt="" width="23" height="23"><span>FastAPI</span></span><span class="tech-item"><img src="icons/postgresql.svg" alt="" width="23" height="23"><span>PostgreSQL</span></span><span class="tech-item"><img src="icons/pytorch.svg" alt="" width="23" height="23"><span>PyTorch</span></span><span class="tech-item"><img src="icons/paddlepaddle.svg" alt="" width="23" height="23"><span>PaddleOCR</span></span><span class="tech-item"><img src="icons/googlecloud.svg" alt="" width="23" height="23"><span>Google Vision</span></span><span class="tech-item"><img src="icons/react.svg" alt="" width="23" height="23"><span>React Native / Expo</span></span><span class="tech-item"><img src="icons/typescript.svg" alt="" width="23" height="23"><span>TypeScript</span></span></p></div></section>
+<section class="seorap-screens" id="seorap-screens" aria-labelledby="seorap-screens-title">
+  <h2 id="seorap-screens-title">서비스 화면</h2>
+  <div class="app-screen-grid"><figure class="app-screen-card">
+      <div class="asset-heading screen-heading"><img class="ui-icon" src="icons/ui/house.svg" alt="" width="22" height="22"><h3>홈</h3></div>
+      <div class="app-screen-crop"><img src="assets/seorap-home.jpg" width="1080" height="2120" alt="서랍 홈: 보유 제품과 피부 기록 기능" decoding="async"></div>
+      <figcaption class="asset-caption screen-caption">제품 등록·피부 기록 시작</figcaption>
+    </figure>
+<figure class="app-screen-card">
+      <div class="asset-heading screen-heading"><img class="ui-icon" src="icons/ui/file-chart-column.svg" alt="" width="22" height="22"><h3>보고서</h3></div>
+      <div class="app-screen-crop"><img src="assets/seorap-reports.jpg?v=20260920-detail" width="1080" height="2120" alt="서랍 보고서 상세: 교체 후보 제품, 평가와 반복된 성분, 단계별 루틴" decoding="async"></div>
+      <figcaption class="asset-caption screen-caption">교체 후보·평가별 반복 성분·루틴 확인</figcaption>
+    </figure>
+<figure class="app-screen-card">
+      <div class="asset-heading screen-heading"><img class="ui-icon" src="icons/ui/flask-conical.svg" alt="" width="22" height="22"><h3>성분 사전</h3></div>
+      <div class="app-screen-crop"><img src="assets/seorap-ingredients.jpg" width="1080" height="2120" alt="서랍 성분 사전: 보유 제품의 성분 목록과 포함 제품 수" decoding="async"></div>
+      <figcaption class="asset-caption screen-caption">보유 제품의 성분·포함 제품 수 조회</figcaption>
+    </figure>
+<figure class="app-screen-card">
+      <div class="asset-heading screen-heading"><img class="ui-icon" src="icons/ui/users.svg" alt="" width="22" height="22"><h3>커뮤니티</h3><span class="screen-demo">데모</span></div>
+      <div class="app-screen-crop"><img src="assets/seorap-community.jpg" width="1080" height="2120" alt="서랍 커뮤니티 데모: 계절별 콘텐츠와 제품 공유 화면" decoding="async"></div>
+      <figcaption class="asset-caption screen-caption">계절별 콘텐츠와 제품 공유 화면</figcaption>
+    </figure></div>
+</section><div class="detail-layout"><div>
+<section class="case persona-case" id="s-context" aria-labelledby="persona-title">
+  <div class="case-heading">
+    <div class="number">01 / 고객 페르소나와 문제 정의</div>
+    <h2 id="persona-title">관리 목적별 고객 페르소나</h2>
+    <p>매장 상담과 개인의 루틴 관리에서 발견한 불편을 시장 조사와 대조했습니다. 보유 제품 정리·루틴 간소화·뷰티와 건강 제품 통합 관리의 세 유형으로 고객 요구를 구분했습니다.</p>
+    <span class="persona-status">기획 단계의 고객 가설</span>
+  </div>
+  <div class="persona-grid">
+    <figure class="persona-card">
+<div class="persona-title"><span class="persona-number">01</span><h3>보유 제품 정리</h3></div>
+<div class="persona-visual persona-organize"><img src="assets/seorap-persona-scenes.png" width="2172" height="724" alt="보유 제품 정리 상황을 표현한 이미지: 제품이 가득한 서랍에서 비슷한 두 제품을 비교하는 모습" loading="lazy" decoding="async"></div>
+<figcaption class="asset-caption persona-need">제품별 역할과 사용 현황을 정리하려는 사용자</figcaption>
+</figure>
+    <figure class="persona-card">
+<div class="persona-title"><span class="persona-number">02</span><h3>루틴 간소화</h3></div>
+<div class="persona-visual persona-simplify"><img src="assets/seorap-persona-scenes.png" width="2172" height="724" alt="루틴 간소화 상황을 표현한 이미지: 여러 제품 중 선호하는 제품을 골라 작은 트레이에 두는 모습" loading="lazy" decoding="async"></div>
+<figcaption class="asset-caption persona-need">사용 제품과 루틴을 간소화하려는 사용자</figcaption>
+</figure>
+    <figure class="persona-card">
+<div class="persona-title"><span class="persona-number">03</span><h3>뷰티·건강 통합 관리</h3></div>
+<div class="persona-visual persona-integrate"><img src="assets/seorap-persona-scenes.png" width="2172" height="724" alt="뷰티·건강 통합 관리 상황을 표현한 이미지: 스킨케어·헤어 제품과 건강기능식품을 한 수납함에 정리하는 모습" loading="lazy" decoding="async"></div>
+<figcaption class="asset-caption persona-need">뷰티·건강 제품을 함께 관리하려는 사용자</figcaption>
+</figure>
+  </div>
+  <figure class="generated-diagram persona-map" id="persona-design-map">
+    <div class="asset-heading"><img class="ui-icon" src="icons/ui/workflow.svg" alt="" width="22" height="22"><h3>고객 목적과 기능 설계의 연결</h3></div>
+    <picture>
+      <source media="(max-width: 600px)" srcset="assets/seorap-persona-map-mobile.png?v=ds1" width="887" height="1774">
+      <img src="assets/seorap-persona-map.png?v=ds1" width="1586" height="992" alt="고객 유형별 설계 대응. 보유 제품 정리: 겹치는 역할과 사용 순서를 판단하도록 역할별 분류·개봉일·사용 기한을 제공합니다. 루틴 간소화: 만족한 제품과 중복 역할을 바탕으로 제품 평가와 역할을 비교해 정리 후보를 제시합니다. 뷰티·건강 통합 관리: 보유 현황과 성분·원료 중복을 확인하도록 스킨케어·헤어·건강 제품을 통합 조회합니다. 공통 기반은 개인 카탈로그입니다." loading="lazy" decoding="async">
+    </picture>
+<figcaption class="asset-caption">기획 설계 · 고객 유형별 판단 기준과 기능 대응</figcaption>
+  </figure>
+  <div class="persona-scenarios">
+    <h3>사용 목적에 따른 보고서 정보 우선순위</h3>
+    <div class="situation-grid">
+      <article><h4>제품을 교체하려 할 때</h4><p>낮게 평가한 제품의 공통 성분과 같은 역할의 대체 제품을 비교합니다.</p></article>
+      <article><h4>제품 수를 줄이려 할 때</h4><p>긍정 평가한 제품을 기준으로 역할이 겹치는 제품을 비교합니다.</p></article>
+      <article><h4>계절이 바뀔 때</h4><p>계절별 관리 목적에 맞는 역할과 보유 제품을 확인합니다.</p></article>
+      <article><h4>새 제품 구매를 고민할 때</h4><p>구매 후보와 보유 제품의 역할·성분을 대조합니다.</p></article>
+      <article><h4>같은 역할이 여러 개일 때</h4><p>개봉일과 남은 사용 기한을 기준으로 보유 제품을 정리합니다.</p></article>
+      <article class="situation-contract"><span class="label">서버 설계</span><h4>사용 목적별 보고서 섹션 순서</h4><p><code>situation</code><span aria-hidden="true"> → </span><code>sectionOrder</code></p></article>
+    </div>
+  </div>
+  <aside class="support persona-common"><h4>제품 비교를 위한 정보 구성</h4><p>첫 이용 시 제품별 역할과 보유 현황을 확인하도록 구성했습니다. 낮게 평가한 제품의 공통 성분을 긍정 평가 제품과 비교하고, 성분별 정보 출처를 함께 제공합니다.</p></aside>
+</section>
+<section class="case model-case" id="s-models" aria-labelledby="model-evaluation-title">
+  <div class="case-heading">
+    <div class="number">02 / 모델 평가와 선정</div>
+    <h2 id="model-evaluation-title">피부 스캔·OCR 모델 비교와 적용 기준</h2>
+    <p>피부 스캔은 항목별 등급 일치도와 모델 크기를, OCR은 전성분 정규화 성능과 제품 등록 대기를 기준으로 평가했습니다.</p>
+  </div>
+  <div class="model-evaluation-grid">
+    <article class="model-study" aria-labelledby="ocr-study-title">
+      <h3 id="ocr-study-title">OCR · 엔진 비교와 도메인 학습</h3>
+      <p class="model-method">OCR 전용 엔진과 시각 언어 모델을 비교했습니다. 입력 해상도·검출기·인식기를 바꾸며 성분명 복원 성능을 평가했습니다.</p>
+      <p class="model-candidates"><b>비교 모델</b> PaddleOCR · HunyuanOCR-1.5 · Qwen3-VL-8B · Windows OCR · EasyOCR</p>
+      <figure class="model-chart">
+        <div class="model-chart-title">전성분 정규화 재현율</div>
+        <img src="assets/seorap-ocr-finetuning.svg" width="560" height="270" alt="PaddleOCR 인식 모델 파인튜닝 전후 전성분 정규화 재현율: 0.84에서 0.91. 동일한 스튜디오 촬영 이미지 200장, 검출기와 입력 상한 1920px 고정." loading="lazy" decoding="async">
+        <figcaption class="asset-caption">스튜디오 사진 200장 중 전성분 정답이 있는 105장 평균 · 검출기·입력 상한 1920px 고정. 학습·평가는 제품 단위로 분리했습니다.</figcaption>
+      </figure>
+      <div class="model-decision"><h4>인식 성능과 운영 조건을 함께 평가</h4><p>전성분 정규화 재현율을 기준으로 공식 검출기와 파인튜닝한 인식기를 조합했습니다. 서비스에는 등록 대기와 운영 비용을 고려해 <strong>Google Vision을 주 엔진</strong>으로, 오류 시 PaddleOCR을 호출하도록 구성했습니다.</p></div>
+    </article>
+    <article class="model-study" aria-labelledby="skin-study-title">
+      <h3 id="skin-study-title">피부 스캔 · 백본 비교와 경량화</h3>
+      <p class="model-method">백본 5종을 동일한 학습 조건으로 비교하고, ConvNeXt-T와 MobileNetV4-M은 난수 시드 3개로 반복 평가했습니다.</p>
+      <p class="model-candidates"><b>비교 모델</b> ResNet-50 · MobileNetV4-M · ConvNeXt-T · ConvNeXt-T DINOv3 · EfficientNetV2-S</p>
+      <figure class="model-chart">
+        <div class="model-chart-title">등급 일치도 <span>평균 QWK</span></div>
+        <img src="assets/seorap-skin-distillation.svg" width="560" height="270" alt="같은 MobileNetV4-M 공유 백본의 평균 QWK: 기준 모델 0.738, 지식 증류 적용 0.779. 모델 선택용 검증셋 결과." loading="lazy" decoding="async">
+        <figcaption class="asset-caption">휴대폰 촬영 데이터 · 모델 선택용 검증셋의 7개 항목 평균. QWK는 등급 오차를 반영한 일치도 지표입니다.</figcaption>
+      </figure>
+      <div class="model-decision"><h4>7개 평가 항목을 공유 백본으로 통합</h4><p>ConvNeXt-T의 예측을 MobileNetV4-M에 학습시키는 지식 증류를 적용했습니다. 7개 항목을 처리하는 <strong>33.9MB ONNX 모델</strong>을 구성하고, 별도 테스트셋에서 항목·연령대별 성능을 확인했습니다.</p></div>
+    </article>
+  </div>
+</section>
+<section class="case" id="s-catalog"><div class="case-heading"><div class="number">03 / 카탈로그 데이터 정제</div><h2>한국어 표시명·카테고리 보정으로 검색 대상 확대</h2><p>한국어 표시명이 없는 제품은 검색에서 제외됐고, 포괄적인 원본 태그는 세부 카테고리에 연결되지 않았습니다. 크림·세럼 같은 키워드에 의존한 분류에서 브랜드 고유 제품명이 누락돼, 제품명·브랜드·카테고리를 함께 재검토했습니다.</p></div><div class="case-body"><ol class="process-lane"><li><span>01</span><b>표시명 정리</b><p>외국어 제품명을 한글로 음역해 검색에 반영했습니다.</p></li><li><span>02</span><b>분류 보완</b><p>규칙 기반 재분류 후 제품명·브랜드·카테고리를 재검토했습니다.</p></li><li><span>03</span><b>DB 반영</b><p>보정한 분류 결과를 DB에 반영했습니다.</p></li></ol></div></section>
+<section class="case generated-flow-case" id="s-register"><div class="case-heading"><div class="number">04 / 제품 등록 절차 개선</div><h2>후보 확인을 앞당긴 제품 등록 절차</h2><p>내부 테스트에서 사진 인식 대기로 검색보다 등록이 오래 걸리는 경우가 있었습니다. 검색 등록 경로를 별도로 제공하고, 앞면 인식 결과에서 제품을 찾지 못할 때 추가 촬영을 요청하도록 변경했습니다.</p></div><div class="case-body"><figure class="generated-diagram registration-diagram">
+  <div class="asset-heading"><img class="ui-icon" src="icons/ui/workflow.svg" alt="" width="22" height="22"><h3>등록 절차 변경 · 후보 확인 시점</h3></div>
+  <picture>
+    <source media="(max-width: 600px)" srcset="assets/seorap-registration-flow-mobile.png?v=ds1" width="887" height="1774">
+    <img src="assets/seorap-registration-flow.png?v=ds1" width="1586" height="992" alt="네이티브 앱의 사진 등록 절차. 변경 전: 앞면 촬영, 뒷면 촬영 여부 결정, 이미지 인식, 후보 확인 순서. 변경 후: 앞면 촬영·인식 후 후보를 먼저 확인합니다. 찾는 제품이 후보에 있으면 선택하고, 없으면 뒷면 촬영 또는 직접 입력으로 진행합니다. 후보 확인을 추가 촬영 여부 결정 앞으로 옮겼습니다." loading="lazy" decoding="async">
+  </picture>
+<figcaption class="asset-caption">네이티브 앱 · 사진 등록 절차의 변경 전후</figcaption>
+</figure></div></section>
+<section class="case" id="s-query"><div class="case-heading"><div class="number">05 / 조회 성능</div><h2>성분 집계의 사전 계산으로 조회 지연 개선</h2><p>성분 동시출현 집계가 DB 실행 제한 5초를 초과해 상세 조회가 실패했습니다. 집계를 배치 작업으로 분리하고 API는 저장된 결과를 조회하도록 변경했습니다.</p></div><div class="case-body"><figure class="artifact"><div class="asset-heading"><img class="ui-icon" src="icons/ui/database.svg" alt="" width="22" height="22"><h3>성분 상세 조회 · 계산 시점과 응답 결과</h3></div><div class="result-comparison"><div><span class="row-label">요청 시 집계</span><strong>5초 제한 초과</strong><p>조회 요청 → 동시출현 계산 → 시간 제한</p></div><div class="result-after"><span class="row-label">배치 집계 적용</span><strong>0.5–1.4초</strong><p>사전 계산 → 결과 저장 → 조회 시 읽기</p></div></div><figcaption class="asset-caption">내부 측정 · 배치 집계 적용 후 주요 성분 상세 API 응답 시간</figcaption></figure><div class="support"><div><h4>데이터 갱신과 예외 처리</h4><p>카탈로그 변경 시 집계 배치를 재실행합니다. 집계 결과가 없는 성분은 요청 시 계산하므로 DB 실행 제한 5초의 영향을 받습니다.</p></div></div><aside class="support"><h4>배치 집계 선택 기준</h4><p>인덱스·쿼리 조정, 구체화 뷰(materialized view), 서버 시작 시 캐시 적재를 검토했습니다. 요청 시 계산량을 줄이고 테스트 환경에서 동작을 검증할 수 있는 배치 테이블을 선택했습니다.</p></aside></div></section>
+</div></div></article></div>
+<nav class="project-navigation project-navigation-bottom" aria-label="다른 프로젝트와 전체 목록">
+  <a class="back-to-portfolio" href="index.html#project-summary"><span aria-hidden="true">←</span> 전체 포트폴리오</a>
+  <div class="project-navigation-links"><a href="seorap.html" aria-current="page">서랍</a><a href="cms.html">CMS</a><a href="cofathon.html">Cofathon</a></div>
+</nav>
+<footer class="profile-footer" aria-label="프로필과 연락처">
+  <div class="footer-item footer-identity"><img src="icons/ui/user-round.svg" width="22" height="22" alt=""><div><b>최원준</b><span>Product Engineer</span></div></div>
+  <a class="footer-item footer-email" href="mailto:cwj0666@gmail.com"><img src="icons/ui/mail.svg" width="22" height="22" alt=""><span>cwj0666@<wbr>gmail.com</span></a>
+  <a class="footer-item footer-github" href="https://github.com/cwj0666"><img src="icons/github.svg" width="22" height="22" alt=""><span>github.com/<wbr>cwj0666</span></a>
+</footer></main>
+
+</body>
+</html>
